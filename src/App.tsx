@@ -9,6 +9,8 @@ import { ColDef, ICellRendererParams, ColGroupDef } from "ag-grid-community"; //
 import Compo from "./compo/compo";
 
 function App() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   useEffect(() => {
     fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
       .then((response) => response.json())
@@ -114,7 +116,11 @@ function App() {
 
   return (
     <div>
-      <Compo />
+      <Compo title="Chogan" isOpen={isOpen} setIsOpen={setIsOpen}>
+        <li className="p-2 text-white">Item</li>
+        <li className="p-2 text-white">Item</li>
+        <li className="p-2 text-white">Item</li>
+      </Compo>
       <div className="ag-theme-quartz" style={{ height: 600 }}>
         <AgGridReact
           rowData={rowData}
